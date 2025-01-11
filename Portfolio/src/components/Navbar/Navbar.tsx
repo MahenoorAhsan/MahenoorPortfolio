@@ -1,19 +1,24 @@
-import React from 'react';
-import style from './Navbar.module.css';
+import React, {useState} from 'react';
+import styles from './Navbar.module.css';
+import { getImageUrl } from '../../utils';
 
 export const Navbar = () => {
+    const [menuOpen,setMenuOpen] = useState(false);
     return (
-        <nav>
-            <a href='/'>Porfolio</a>
-            <div>
-                <ul className='d-flex'>
-                    <li><a href='#about'>About</a></li>
-                    <li><a href='#experience'></a>Experience</li>
-                    <li><a href='#skills'></a>Skills</li>
-                    <li><a href='#education'></a>Education</li>
-                    <li><a href='#projects'></a>Projects</li>
-                    <li><a href='#achievements'></a>Achievements </li>
-                    <li><a href='#contact'></a>Contact</li>
+        
+        <nav className={styles.navbar}>
+            <a href='/' className={styles.title}>Porfolio</a>
+            <div className={styles.menu}>
+                <img className={styles.menuBtn} src={ menuOpen ? "../../assets/nav/crossIcon.png":"../../assets/nav/menuIcon.png"} alt="menu-button"
+                onClick={() => setMenuOpen(!menuOpen)}></img>
+                <ul className={ `${styles.menuItems} ${menuOpen && styles.menuOpen}`}>
+                    <li onClick={() => setMenuOpen(false)}><a href='#about'>About</a></li>
+                    <li onClick={() => setMenuOpen(false)}><a href='#experience'>Experience</a></li>
+                    <li onClick={() => setMenuOpen(false)}><a href='#skills'>Skills</a></li>
+                    <li onClick={() => setMenuOpen(false)}><a href='#education'>Education</a></li>
+                    <li onClick={() => setMenuOpen(false)}><a href='#projects'>Projects</a></li>
+                    <li onClick={() => setMenuOpen(false)}><a href='#achievements'>Achievements</a> </li>
+                    <li onClick={() => setMenuOpen(false)}><a href='#contact'>Contact</a></li>
                 </ul>
             </div>
         </nav>
